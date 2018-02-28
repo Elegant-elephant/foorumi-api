@@ -7,7 +7,13 @@
     {{topic.description}}
   </p>
 
-  <h2>{{topic.Messages.length}} viesti{{ topic.Messages.length == 1 ? "" : "ä" }}</h2>
+  <h2>
+    <ng-pluralize count="topic.Messages.length"
+    when="{'0': 'Täällä ei ole yhtään viestiä.',
+        'one': '1 viesti.',
+        'other': '{{topic.Messages.length}} viestiä.'}">
+    </ng-pluralize>
+  </h2>
 
   <ul class="media-list">
     <li class="media" ng-repeat="message in topic.Messages">
