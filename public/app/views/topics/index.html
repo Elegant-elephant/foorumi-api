@@ -4,10 +4,10 @@
 
 <div ng-init="init()" ng-controller="TopicsListController as c">
   <div>
-    <div ng-repeat="topic in data.topics" class="panel panel-default">
+    <div ng-repeat="topic in topics" class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <a href="#/topics/1">{{topic.name}}</a>
+          <a href="#/topics/{{topic.id}}">{{topic.name}}</a>
         </h3>
       </div>
       <div class="panel-body">
