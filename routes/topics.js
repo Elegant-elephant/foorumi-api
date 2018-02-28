@@ -9,7 +9,9 @@ var Models = require('../models');
 // GET /topics
 router.get('/', function(req, res, next) {
     // Hae kaikki aihealueet tässä (Vinkki: findAll)
-    res.send(200);
+    Models.Topic.findAll().then(function(topics){
+      res.json(topics)
+    })
 });
 
 // GET /topics/:id
@@ -23,8 +25,12 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   // Lisää tämä aihealue
   var topicToAdd = req.body;
-  // Palauta vastauksena lisätty aihealue
-  res.send(200);
+  Models.Topic.create(topicToAdd).then(function(topic){
+    console.log(topic);
+    // Palauta vastauksena lisätty aihealue
+    res.json(topic);
+  })
+  
 });
 
 // POST /topics/:id/message
