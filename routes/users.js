@@ -15,11 +15,13 @@ router.post('/', function(req, res, next){
       username: userToAdd.username
     }
   }).then((user) => {
-    if(!user) {
-      // VAROITUS: salasana on talletettu selkokielisenä!
-      Models.User.create(userToAdd);
+    if(user) {
+      res.status(400).json({ error: "Käyttäjätunnus on jo olemassa!" });
     } else {
-      res.sendStatus(400).json({ error: "Käyttäjätunnus on jo olemassa!" });
+      // VAROITUS: salasana on talletettu selkokielisenä!
+      Models.User.create(userToAdd).then(function(user){
+        res.json(user);
+      });
     }
   })
 });
