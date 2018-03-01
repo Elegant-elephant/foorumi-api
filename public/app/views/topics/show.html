@@ -33,9 +33,9 @@
     </li>
   </ul>
 
-  <h2>Lisää oma viestisi</h2>
+  <h2 ng-if="userLoggedIn">Lisää oma viestisi</h2>
 
-  <form>
+  <form ng-if="userLoggedIn">
     <div class="form-group">
       <label>Otsikko</label>
       <input type="text" class="form-control" ng-model="newMessage.title">
