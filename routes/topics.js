@@ -23,7 +23,7 @@ router.get('/:id', function(req, res, next) {
     include: {
       model: Models.Message,
       include: {
-        model: Model.User
+        model: Models.User
       }
     }
   }).then(function(topic) {
