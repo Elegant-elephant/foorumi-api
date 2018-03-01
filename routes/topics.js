@@ -21,7 +21,10 @@ router.get('/:id', function(req, res, next) {
       id: topicId
     },
     include: {
-      model: Models.Message
+      model: Models.Message,
+      include: {
+        model: Model.User
+      }
     }
   }).then(function(topic) {
     res.json(topic);
@@ -29,7 +32,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 // POST /topics
-router.post('/', function(req, res, next) {
+router.post('/', authentication, function(req, res, next) {
   var topicToAdd = req.body;
   Models.Topic.create(topicToAdd).then(function(topic) {
     console.log(topic);
@@ -45,6 +48,7 @@ router.post('/:id/message', function(req, res, next) {
   var messageToAdd = req.body;
 
   messageToAdd.TopicId = topicId;
+  messageToAdd.UserId = req.session.userId;
   Models.Message.create(messageToAdd).then(function(message) {
     res.json(message);
   });
