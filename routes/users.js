@@ -19,7 +19,7 @@ router.post('/', function(req, res, next){
       // VAROITUS: salasana on talletettu selkokielisenä!
       Models.User.create(userToAdd);
     } else {
-      res.status(400).json({ error: "Käyttäjätunnus on jo olemassa!" });
+      res.sendStatus(400).json({ error: "Käyttäjätunnus on jo olemassa!" });
     }
   })
 });
@@ -38,7 +38,7 @@ router.post('/authenticate', function(req, res, next){
         req.session.userId = user.id;
         res.json(user);
       } else {
-        res.send(403);
+        res.sendStatus(403);
       }
     });
 });
