@@ -27,7 +27,7 @@
         </p>
 
         <p class="text-muted">
-          Käyttäjätunnus tähän, {{ message.createdAt | date : "dd.MM.y hh.mm" }}
+          {{message.User.username}}, {{ message.createdAt | date : "dd.MM.y hh.mm" }}
         </p>
       </div>
     </li>
