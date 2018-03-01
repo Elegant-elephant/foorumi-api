@@ -1,26 +1,41 @@
 var FoorumApp = angular.module('FoorumApp', ['ngRoute']);
 
+
 FoorumApp.config(function($routeProvider){
+
+  const resolve = {
+    userLoggedIn: function($rootScope, Api){
+      return Api.getUserLoggedIn().success(function(user){
+        $rootScope.userLoggedIn = user.username ? user : null;
+      });
+    }
+  }
+  
   $routeProvider
     .when('/', {
       controller: 'TopicsListController',
-      templateUrl: 'app/views/topics/index.html'
+      templateUrl: 'app/views/topics/index.html',
+      resolve: resolve
     })
     .when('/topics/:id', {
       controller: 'ShowTopicController',
-      templateUrl: 'app/views/topics/show.html'
+      templateUrl: 'app/views/topics/show.html',
+      resolve: resolve
     })
     .when('/messages/:id', {
       controller: 'ShowMessageController',
-      templateUrl: 'app/views/messages/show.html'
+      templateUrl: 'app/views/messages/show.html',
+      resolve: resolve
     })
     .when('/login', {
       controller: 'UsersController',
-      templateUrl: 'app/views/users/login.html'
+      templateUrl: 'app/views/users/login.html',
+      resolve: resolve
     })
     .when('/register', {
       controller: 'UsersController',
-      templateUrl: 'app/views/users/register.html'
+      templateUrl: 'app/views/users/register.html',
+      resolve: resolve
     })
     .otherwise({
       redirectTo: '/'
