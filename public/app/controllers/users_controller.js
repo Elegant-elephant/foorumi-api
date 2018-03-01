@@ -1,8 +1,7 @@
 FoorumApp.controller('UsersController', function($scope, $location, Api){
   // Toteuta kontrolleri tähän
-  console.log($scope.user);
+  
   $scope.register = function(){
-
     Api.register({
       username: $scope.newUser.username,
       password: $scope.newUser.password
