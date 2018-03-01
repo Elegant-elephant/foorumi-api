@@ -52,7 +52,7 @@ router.get('/logged-in', function(req, res, next){
   } else {
     // Hae käyttäjä loggedInId-muuttujan arvon perusteella (Vinkki: findOne)
     Models.User.findOne({
-      where: { id: loggedInId}
+      where: { id: loggedInId }
     }).then((user) => { res.json(user) });
   }
 });
