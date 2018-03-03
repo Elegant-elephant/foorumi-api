@@ -2,23 +2,27 @@
   <div class="page-header">
     <h1>Rekisteröidy</h1>
   </div>
-
-  <form>
+  
+  <form name="form" novalidate>
     <div class="form-group">
       <label>Käyttäjätunnus</label>
-      <input type="text" class="form-control" ng-model="newUser.username" required>
+      <input type="text" class="form-control" name="username" ng-model="user.username" required>
+      <div ng-show="form.username.$error.required && form.$submitted" class="help-block">Anna käyttäjätunnus</div>
     </div>
 
     <div class="form-group">
       <label>Salasana</label>
-      <input type="text" class="form-control" ng-model="newUser.password" required>
+      <input type="text" id="password" class="form-control" name="password" ng-model="user.password" required>
+      <div ng-show="form.password.$error.required && form.$submitted" class="help-block">Anna salasana</div>
     </div>
 
     <div class="form-group">
       <label>Salasana uudelleen</label>
-      <input type="text" class="form-control" ng-model="newUser.passwordAgain" required>
+      <input type="text" class="form-control" name="confirmPassword" ng-model="passwordConfirm" required equal="{{user.password}}">
+      <div ng-show="form.confirmPassword.$error.equal" class="help-block">Salasana ei mätsää</div>
+      <div ng-show="form.confirmPassword.$error.required && form.$submitted" class="help-block">Anna salasana uudelleen</div>
     </div>
 
-    <button class="btn btn-success" ng-click="register()">Rekisteröidy</button>
+    <button class="btn btn-success" ng-click="register(form)">Rekisteröidy</button>
   </form>
 </div>

@@ -8,9 +8,11 @@ FoorumApp.controller('TopicsListController', function($scope, $location, Api) {
     }) 
   }
 
-  $scope.addTopic = () => {
-    Api.addTopic($scope.newTopic)
-      .then(updateTopics());
+  $scope.addTopic = (form) => {
+    if(form.$valid){
+      Api.addTopic($scope.newTopic)
+        .then(updateTopics());
+    }
   }
 
   $scope.init = updateTopics();

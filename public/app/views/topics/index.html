@@ -19,15 +19,17 @@
 
   <h2 ng-if="userLoggedIn">Lisää oma aihealueesi</h2>
 
-  <form ng-if="userLoggedIn">
+  <form ng-if="userLoggedIn" name="form" novalidate>
     <div class="form-group">
       <label>Nimi</label>
-      <input type="text" class="form-control" ng-model="newTopic.name">
+      <input type="text" class="form-control" name="name" ng-model="newTopic.name" required>
+      <div ng-show="form.$submitted && form.name.$error.required" class="help-block">Anna nimi aihealueelle</div>
     </div>
     <div class="form-group">
       <label>Kuvaus</label>
-      <textarea class="form-control" ng-model="newTopic.description"></textarea>
+      <textarea class="form-control" name="description" ng-model="newTopic.description" required></textarea>
+      <div ng-show="form.$submitted && form.description.$error.required" class="help-block">Kuvaa aihealuettasi</div>
     </div>
-    <button class="btn btn-success" ng-click="addTopic()">Lisää aihealue</button>
+    <button class="btn btn-success" ng-click="addTopic(form)">Lisää aihealue</button>
   </form>
 </div>

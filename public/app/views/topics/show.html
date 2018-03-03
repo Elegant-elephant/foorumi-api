@@ -35,16 +35,18 @@
 
   <h2 ng-if="userLoggedIn">Lisää oma viestisi</h2>
 
-  <form ng-if="userLoggedIn">
+  <form ng-if="userLoggedIn" name="form" novalidate>
     <div class="form-group">
       <label>Otsikko</label>
-      <input type="text" class="form-control" ng-model="newMessage.title">
+      <input type="text" class="form-control" name="title" ng-model="newMessage.title" required>
+      <div ng-show="form.$submitted && form.title.$error.required" class="help-block">Anna otsikko</div>
     </div>
 
     <div class="form-group">
       <label>Viesti</label>
-      <textarea class="form-control" ng-model="newMessage.content"></textarea>
+      <textarea class="form-control" name="content" ng-model="newMessage.content" required></textarea>
+      <div ng-show="form.$submitted && form.content.$error.required" class="help-block">Kirjoita viesti</div>
     </div>
-    <button class="btn btn-success" ng-click="addMessage()">Lisää viesti</button>
+    <button class="btn btn-success" ng-click="addMessage(form)">Lisää viesti</button>
   </form>
 </div>

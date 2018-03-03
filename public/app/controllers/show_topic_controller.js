@@ -10,8 +10,10 @@ FoorumApp.controller('ShowTopicController', function($scope, $routeParams, $loca
   
   $scope.init = updateTopic();
 
-  $scope.addMessage = () => {
-    Api.addMessage($scope.newMessage, $routeParams.id)
-    .then(updateTopic());
+  $scope.addMessage = (form) => {
+    if(form.$valid){
+      Api.addMessage($scope.newMessage, $routeParams.id)
+      .then(updateTopic());
+    }
   }
 });
