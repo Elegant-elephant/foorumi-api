@@ -11,7 +11,7 @@ FoorumApp.controller('ShowTopicController', function($scope, $routeParams, $loca
   $scope.init = updateTopic();
 
   $scope.addMessage = () => {
-    Api.addMessage({title: $scope.newMessage.title, content: $scope.newMessage.content}, $routeParams.id)
+    Api.addMessage($scope.newMessage, $routeParams.id)
     .then(updateTopic());
   }
 });
