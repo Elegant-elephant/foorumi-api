@@ -13,8 +13,8 @@ FoorumApp.controller('UsersController', function($scope, $location, Api){
 
   $scope.login = function(){
     Api.login({
-      username: $scope.user.username,
-      password: $scope.user.password
+      username: $scope.loginUser.username,
+      password: $scope.loginUser.password
     }).success(function(user){
       console.log('Kirjautuminen onnistui!');
       $location.path('/')
