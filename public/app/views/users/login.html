@@ -7,16 +7,16 @@
     <div class="form-group">
       <label>Käyttäjätunnus</label>
       <input type="text" class="form-control" name="username" ng-model="user.username" required>
-      <div ng-show="form.$submitted && form.username.$error.required" class="help-block">Anna käyttäjätunnus</div>
+      <div ng-show="form.$submitted && form.username.$error.required && form.username.$pristine" class="help-block">Anna käyttäjätunnus</div>
     </div>
 
     <div class="form-group">
       <label>Salasana</label>
       <input type="text" class="form-control" name="password" ng-model="user.password" required>
-      <div ng-show="form.$submitted && form.password.$error.required" class="help-block">Anna salasana</div>
+      <div ng-show="form.$submitted && form.password.$error.required && form.password.$pristine" class="help-block">Anna salasana</div>
     </div>
 
     <button class="btn btn-primary" ng-click="login(form)">Kirjaudu sisään</button>
-    <div ng-show="errorMessage">{{errorMessage}}</div>
+    <div ng-show="errorMessage" class="help-block">{{errorMessage}}</div>
   </form>
 </div>
