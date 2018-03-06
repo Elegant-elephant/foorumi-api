@@ -8,6 +8,14 @@ FoorumApp.controller('TopicsListController', function($scope, $location, Api) {
     }) 
   }
 
+  $scope.onSubmit = (form) => {
+    if(form.$valid){
+      form.$setUntouched();
+      form.$setPristine();
+      $scope.newMessage = {name: null, description: null}
+    }
+  }
+
   $scope.addTopic = (form) => {
     if(form.$valid){
       Api.addTopic($scope.newTopic)

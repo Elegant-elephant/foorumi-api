@@ -19,7 +19,7 @@
 
   <h2 ng-if="userLoggedIn">Lisää oma aihealueesi</h2>
 
-  <form ng-if="userLoggedIn" name="form" novalidate>
+  <form ng-if="userLoggedIn" name="form" ng-submit="onSubmit(form)" novalidate>
     <div class="form-group">
       <label>Nimi</label>
       <input type="text" class="form-control" name="name" ng-model="newTopic.name" required>
