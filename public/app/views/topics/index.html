@@ -5,6 +5,8 @@
   </div>
 
   <div>
+    <h3 ng-show="topics == null">Ladataan...</h3>
+    <h3 ng-show="topics.length < 1">Hiljaista on...</h3>
     <div ng-repeat="topic in topics" class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
