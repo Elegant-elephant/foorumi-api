@@ -12,7 +12,7 @@ FoorumApp.controller('TopicsListController', function($scope, $location, Api) {
     if(form.$valid){
       form.$setUntouched();
       form.$setPristine();
-      $scope.newMessage = {name: null, description: null}
+      $scope.newTopic = {name: null, description: null}
     }
   }
 
