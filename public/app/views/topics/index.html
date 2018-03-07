@@ -19,8 +19,7 @@
 
   <div ng-show="!userLoggedIn">
     <h3>Kirjaudu sisään lisätäksesi aihealueita</h2>
-    <a class="btn btn-primary" href="#/login">Kirjaudu sisään</a>
-    <a class="btn btn-primary" href="#/register">Rekisteröidy</a>
+    <ng-include src="'/app/views/users/buttons.html'"></ng-include>
   </div>
 
   <div ng-show="userLoggedIn">
