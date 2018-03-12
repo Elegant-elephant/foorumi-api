@@ -23,7 +23,7 @@ FoorumApp.controller('ShowMessageController', function($scope, $routeParams, Api
 	$scope.addReply = function(form){
 		if(form.$valid){
       Api.addReply($scope.reply, $routeParams.id)
-      	.then(updateMessage());
+      	.then(updateMessage);
     }
 	}
 
