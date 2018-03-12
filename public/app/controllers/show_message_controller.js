@@ -1,5 +1,4 @@
 FoorumApp.controller('ShowMessageController', function($scope, $routeParams, Api){
-	// Toteuta kontrolleri tähän
 
 	$scope.reply = {
 		content: null
@@ -8,7 +7,6 @@ FoorumApp.controller('ShowMessageController', function($scope, $routeParams, Api
 	function updateMessage(){
 		Api.getMessage($routeParams.id).then( res => {
 			$scope.message = res.data;
-			console.log(res.data);
 		})
 	}
 

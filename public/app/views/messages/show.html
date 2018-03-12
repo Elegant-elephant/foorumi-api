@@ -7,13 +7,13 @@
     {{message.content}}
   </p>
 
-  <h2>
+  <h3>
     <ng-pluralize count="message.Replies.length"
       when="{'0': 'Viestiin ei ole vastattu.',
           'one': '1 vastaus.',
           'other': '{{message.Replies.length}} vastausta.'}">
     </ng-pluralize>
-  </h2>
+  </h3>
   
   <ul class="media-list">
     <li class="media" ng-repeat="reply in message.Replies">
@@ -31,14 +31,21 @@
     </li>
   </ul>
 
-  <h2 ng-if="userLoggedIn">Lisää oma vastauksesi</h2>
+  <div ng-show="!userLoggedIn">
+    <h3>Kirjaudu sisään lisätäksesi viestejä</h2>
+    <ng-include src="'/app/views/users/buttons.html'"></ng-include>
+  </div>
 
-  <form name="form" ng-if="userLoggedIn" ng-submit="onSubmit(form)" novalidate>
-    <div class="form-group">
-      <label>Vastaus</label>
-      <textarea class="form-control" name="content" ng-model="reply.content" required></textarea>
-      <div ng-show="form.$submitted && form.content.$error.required" class="help-block">Vastaus ei voi olla tyhjä</div>
-    </div>
-    <button class="btn btn-success" ng-click="addReply(form)">Lisää vastaus</button>
-  </form>
+  <div ng-show="userLoggedIn">
+    <h3>Lisää oma vastauksesi</h3>
+
+    <form name="form" ng-submit="onSubmit(form)" novalidate>
+      <div class="form-group">
+        <label>Vastaus</label>
+        <textarea class="form-control" name="content" ng-model="reply.content" required></textarea>
+        <div ng-show="form.$submitted && form.content.$error.required" class="help-block">Vastaus ei voi olla tyhjä</div>
+      </div>
+      <button class="btn btn-success" ng-click="addReply(form)">Lisää vastaus</button>
+    </form>
+  </div>
 </div>

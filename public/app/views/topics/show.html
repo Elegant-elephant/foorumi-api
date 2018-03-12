@@ -7,13 +7,13 @@
     {{topic.description}}
   </p>
 
-  <h2>
+  <h3>
     <ng-pluralize count="topic.Messages.length"
-    when="{'0': 'Täällä ei ole yhtään viestiä.',
-        'one': '1 viesti.',
-        'other': '{{topic.Messages.length}} viestiä.'}">
-    </ng-pluralize>
-  </h2>
+      when="{'0': 'Täällä ei ole yhtään viestiä.',
+          'one': '1 viesti.',
+          'other': '{{topic.Messages.length}} viestiä.'}"
+    ></ng-pluralize>
+  </h3>
 
   <ul class="media-list">
     <li class="media" ng-repeat="message in topic.Messages">
@@ -33,20 +33,27 @@
     </li>
   </ul>
 
-  <h2 ng-if="userLoggedIn">Lisää oma viestisi</h2>
+  <div ng-show="!userLoggedIn">
+    <h3>Kirjaudu sisään lisätäksesi viestejä</h2>
+    <ng-include src="'/app/views/users/buttons.html'"></ng-include>
+  </div>
 
-  <form ng-if="userLoggedIn" name="form" ng-submit="onSubmit(form)" novalidate>
-    <div class="form-group">
-      <label>Otsikko</label>
-      <input type="text" class="form-control" name="title" ng-model="newMessage.title" required>
-      <div ng-show="form.$submitted && form.title.$error.required" class="help-block">Anna otsikko</div>
-    </div>
+  <div ng-show="userLoggedIn">
+    <h2 >Lisää oma viestisi</h2>
 
-    <div class="form-group">
-      <label>Viesti</label>
-      <textarea class="form-control" name="content" ng-model="newMessage.content" required></textarea>
-      <div ng-show="form.$submitted && form.content.$error.required" class="help-block">Kirjoita viesti</div>
-    </div>
-    <button class="btn btn-success" ng-click="addMessage(form)">Lisää viesti</button>
-  </form>
+    <form name="form" ng-submit="onSubmit(form)" novalidate>
+      <div class="form-group">
+        <label>Otsikko</label>
+        <input type="text" class="form-control" name="title" ng-model="newMessage.title" required>
+        <div ng-show="form.$submitted && form.title.$error.required" class="help-block">Anna otsikko</div>
+      </div>
+
+      <div class="form-group">
+        <label>Viesti</label>
+        <textarea class="form-control" name="content" ng-model="newMessage.content" required></textarea>
+        <div ng-show="form.$submitted && form.content.$error.required" class="help-block">Kirjoita viesti</div>
+      </div>
+      <button class="btn btn-success" ng-click="addMessage(form)">Lisää viesti</button>
+    </form>
+  </div>
 </div>
