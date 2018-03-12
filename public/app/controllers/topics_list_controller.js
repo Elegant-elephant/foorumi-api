@@ -19,7 +19,7 @@ FoorumApp.controller('TopicsListController', function($scope, $location, Api) {
   $scope.addTopic = (form) => {
     if(form.$valid){
       Api.addTopic($scope.newTopic)
-        .then(updateTopics());
+        .then(updateTopics);
     }
   }
 
