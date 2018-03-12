@@ -35,7 +35,6 @@ router.get('/:id', function(req, res, next) {
 router.post('/', authentication, function(req, res, next) {
   var topicToAdd = req.body;
   Models.Topic.create(topicToAdd).then(function(topic) {
-    console.log(topic);
     res.json(topic);
   });
 });

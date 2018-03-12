@@ -8,10 +8,10 @@ FoorumApp.controller('UsersController', function($scope, $location, Api){
     form.$setPristine();
     if(form.$valid){
       Api.register($scope.user).success(function(response){
-        console.log('Rekisteröinti onnistui!');
+
         $location.path('/login')
       }).error(function(response){
-        console.log('Rekisteröinti epäonnistui!');
+
         $scope.errorMessage = response.error;
       });
     }
@@ -24,7 +24,7 @@ FoorumApp.controller('UsersController', function($scope, $location, Api){
     if(form.$valid){
       Api.login($scope.user)
       .success(function(user){
-        console.log('Kirjautuminen onnistui!');
+
         $location.path('/')
       }).error(function(){
         $scope.errorMessage = 'Väärä käyttäjätunnus tai salasana!';
