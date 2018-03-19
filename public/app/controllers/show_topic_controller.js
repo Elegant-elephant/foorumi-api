@@ -7,8 +7,6 @@ FoorumApp.controller('ShowTopicController', function($scope, $routeParams, $loca
       $scope.topic = res.data;
     })
   }
-  
-  $scope.init = updateTopic();
 
   $scope.onSubmit = (form) => {
     if(form.$valid){
@@ -21,8 +19,9 @@ FoorumApp.controller('ShowTopicController', function($scope, $routeParams, $loca
   $scope.addMessage = (form) => {  
     if(form.$valid){
       Api.addMessage($scope.newMessage, $routeParams.id)
-      .then(updateTopic);
+        .then(updateTopic);
     }
-
   }
+
+  $scope.init = updateTopic;
 });

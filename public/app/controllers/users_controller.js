@@ -1,34 +1,26 @@
-FoorumApp.controller('UsersController', function($scope, $location, Api){
-  // Toteuta kontrolleri tähän
+FoorumApp.controller('UsersController', function($scope, $location, Api) {
+
   $scope.user = {username: null, password: null};
   
-  $scope.register = function(form){
+  $scope.register = (form) => {
     $scope.errorMessage = null;
     form.$setUntouched();
     form.$setPristine();
-    if(form.$valid){
-      Api.register($scope.user).success(function(response){
-
-        $location.path('/login')
-      }).error(function(response){
-
-        $scope.errorMessage = response.error;
-      });
+    if (form.$valid) {
+      Api.register($scope.user)
+        .success((response) => {$location.path('/login');})
+        .error((response) => {$scope.errorMessage = response.error;});
     }
   }
 
-  $scope.login = function(form){
+  $scope.login = (form) => {
     $scope.errorMessage = null;
     form.$setUntouched();
     form.$setPristine();
-    if(form.$valid){
+    if (form.$valid) {
       Api.login($scope.user)
-      .success(function(user){
-
-        $location.path('/')
-      }).error(function(){
-        $scope.errorMessage = 'Väärä käyttäjätunnus tai salasana!';
-      });
+        .success((user) => {$location.path('/');})
+        .error(() => {$scope.errorMessage = 'Väärä käyttäjätunnus tai salasana!';})
     }
   }
 });
