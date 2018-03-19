@@ -23,6 +23,6 @@ FoorumApp.controller('TopicsListController', function($scope, $location, Api) {
     }
   }
 
-  $scope.init = updateTopics();
+  $scope.init = updateTopics;
 
 });
