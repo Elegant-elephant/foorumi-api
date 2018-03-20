@@ -3,8 +3,11 @@ This is a NodeJS/Angular practicing project created by Xpdmk and Elegant-elephan
 
 The language currently used is finnish.
 
+## Database
+Project uses SQLITE database by default. If system has an DATABASE_URL enviroment variable, it uses POSTGRES instead.
+
 ## Demo
-This project includes everything in terms of dependences, but the SQLITE database has to be created from a seed. This can be done by running: 
+This project includes everything in terms of dependences, but the SQLITE or POSTGRES database has to be created from a seed. This can be done by running: 
 
 ```
 node db/seed.js
