@@ -1,5 +1,5 @@
 # Foorumi-API
-This is a NodeJS/Angular practicing project created by Xpdmk and Elegant-elephant. The server API handles creation of topics, message in the topics and replies in the messages and are updated live after the data has been submitted to the API.
+This is a NodeJS/Angular practicing project created by Xpdmk and lauri-ko. The server API handles creation of topics, message in the topics and replies in the messages and are updated live after the data has been submitted to the API.
 
 The language currently used is finnish.
 
